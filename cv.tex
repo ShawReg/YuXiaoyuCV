@@ -1,59 +1,240 @@
+```latex
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
 
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
 \begin{tabularx}{\linewidth}{@{} C @{}}
 \Huge{Xiaoyu Yu (余骁宇)} \\[7.5pt]
 Beihang University, Beijing, China \\[3pt]
-
-\href{mailto:xiaoyuyu_shaw@163.com}
-{\raisebox{-0.05\height}\faEnvelope\ xiaoyuyu\_shaw@163.com}
-\ $|$\ 
-\href{tel:+8615016867879}
-{\raisebox{-0.05\height}\faMobile\ +86 15016867879}
-\ $|$\ 
-Research Gate
+Research Gate \ $|$\ 
+\href{mailto:xiaoyuyu_shaw@163.com}{\raisebox{-0.05\height}\faEnvelope\ xiaoyuyu\_shaw@163.com} \ $|$\ 
+\href{tel:+8615016867879}{\raisebox{-0.05\height}\faMobile\ +86 15016867879} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
-
 \section{Education}
 
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
 Sep. 2023 -- Dec. 2025
 &
 \textbf{Academic Master of Advancing Theory and Engineering}
 at Beihang University (BUAA), School of Astronautics
-\hfill Ranking 2/134, GPA: 3.78/4.0
+\hfill \normalsize (Ranking: 2/134, GPA: 3.78/4.0)
 \\[5pt]
 
 Sep. 2019 -- Jun. 2023
 &
 \textbf{Bachelor of Engineering in Aerospace (First)}
 at Beihang University (BUAA), School of Astronautics
-\hfill Ranking 5/89, GPA: 3.73/4.0
+\hfill (Ranking: 5/89, GPA: 3.73/4.0)
 \\[5pt]
 
 Sep. 2020 -- Jun. 2023
 &
 \textbf{Bachelor of Science in Pure and Applied Mathematics (Second)}
 at Beihang University (BUAA), School of Mathematical Sciences
-\hfill Average Score: 91/100
+\hfill (Average Score: 91/100)
 \\
-
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	RESEARCH INTERESTS
+%	EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
 
+%Interests/ Keywords / Summary
 \section{Research Interests}
+AI for Science, Multiphysics Interaction, 3D-Ultrasonic Reconstruction, High-resolution Dynamic Optical diagnosis.
 
-AI for Science, Multiphysics Interaction, 3D-Ultrasonic Reconstruction,
-High-resolution Dynamic Optical diagnosis.
+%----------------------------------------------------------------------------------------
+%	PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Project Experience}
+
+\begin{joblong}{High Frequency 3D Dynamic Characterization of Gas-Liquid Interfaces --- Project Student Leader}{}
+\item Proposed a theory for acoustic scattering measurement of high frequency dynamic gas-liquid interfaces in micro jets and bubbles, developed a signal inversion algorithm and processing software.
+\item Developed an ultrasonic array test system equipped with multi-channel, high-frequency, and quick synchronous data acquisition, achieving millimeter-level accuracy in measuring bubble inside liquid nitrogen storage tanks at approximately -196$^\circ$C (77K).
+\end{joblong}
+
+
+\begin{joblong}{Deep Learning-based Reconstruction of Transient Temperature Fields in Thrust Chambers --- Project Student Leader}{}
+\item Innovated fluid field inversion by diffusion models (UNet and EDM frameworks), surpassing traditional neural networks in accuracy and achieving under 2\% average error in reconstructing temperature, velocity, and pressure fields from sparse measurements.
+\item Developed a multi-condition dataset by an elliptic PDE-based grid, supporting 416 chemical cases, and introduced an SSIM-based metric with PAC\&I2SB methods for super resolution, enabling high fidelity reconstruction of transient thermoacoustic dynamics with 0.327\% relative error via DDIM.
+\end{joblong}
+
+
+\begin{joblong}{High-resolution and Ultrafast Characterization and Diagnosis of Thermochemical Reactions under Extreme Experimental Conditions --- Project Student Leader}{}
+\item Ultra high speed optical measurement and high spatiotemporal resolution spectroscopy were employed to achieve dynamic measurement of the flame parameters under high temperature and high pressure, thereby revealing ultrafast reaction mechanisms in multiphysics interactions.
+\item Laser interferometry and sub-pixel edge detection were utilized to capture microscale wall vibrations, leading to the proposal of corresponding control strategies.
+\end{joblong}
+
+
+\begin{joblong}{Multi-scale 3D PIV: From Nanoparticle Tracking to High-velocity Flows --- Project Student Leader}{}
+\item Two sets of Particle Image Velocimetry (PIV) measurement systems, High pressure, high speed PIV system (6 MPa, 100-600 m/s) and 2D3C-PIV system can be used for three-dimensional measurement, high precision capture of nanoparticle motion trajectories in the flow field.
+\end{joblong}
+
+
+%----------------------------------------------------------------------------------------
+%	INTERNSHIP EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Internship Experience}
+
+\begin{joblong}{Beihang University Student Affairs Office --- Student Counselor}{Mar. 2021 - Jul. 2025}
+\item Responsible for office conference work, management work, document work, etc.
+\item Organize various large-scale events, ceremonies, sports games, and military training in the university.
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%	EXTRACURRICULAR ACTIVITIES
+%----------------------------------------------------------------------------------------
+\section{Extracurricular Activities}
+
+\begin{joblong}{Graduate Student Union of the School of Astronautics --- Chairman}{}
+\item Comprehensive management and coordination of various departments within the organization.
+\item Liaise and discuss with the responsible persons of relevant institutes and technical units.
+\item Served as the head of the isolation area of the campus during the period of COVID-19.
+\end{joblong}
 
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS
@@ -65,3 +246,62 @@ High-resolution Dynamic Optical diagnosis.
 \nocite{*}
 \printbibliography[heading=none]
 \end{refsection}
+
+%----------------------------------------------------------------------------------------
+%	SCHOLARSHIPS AND HONORS
+%----------------------------------------------------------------------------------------
+
+\section{Scholarships \& Honors}
+
+\begin{joblong}{Selected Scholarships}{}
+\item National Scholarship (Top in China, 2025)
+\item First-class Scholarship (Top, 2024)
+\item CATIC Top-class Scholarship (Top, 2024)
+\item Counselor First-class Scholarship (Top, 2024)
+\item Academic First-class Scholarship (Top, 2024)
+\item Freshman Scholarship (Top, 2023)
+\item Mathematics \& Physics Competition Top-class Scholarship (Top, 2021, 2022)
+\item Academic Scholarship (2021, 2022)
+\end{joblong}
+
+
+\begin{joblong}{Selected Honors}{}
+\item National University Student Mathematics Competition --- First Prize (Top, 2021, 2022)
+\item National Undergraduate Graduation Design Competition --- Second Prize (2023)
+\item BUAA Shenyuan's Gold Medal Award (The highest honor for students, only 10 people each year, 2025)
+\item Outstanding Graduates (2023)
+\item Excellent Student Cadres (2022, 2023, 2024)
+\item Top Ten Preachers (2024.4, 2024.10, 2025.4)
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Programming \& Software & \normalsize{Matlab, LabView, Fortran, C, Python, Chat-GPT, C++, Java Script, Origin}\\
+Engineering Software & \normalsize{AutoCAD mechanical designer (Chinese professional qualification certificate); SolidWorks mechanical designer (Chinese professional qualification certificate)}\\
+Computer Qualification & \normalsize{National Computer Rank Examination in MS Office Level 2 (top level)}\\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	ADDITIONAL INFORMATION
+%----------------------------------------------------------------------------------------
+\section{Additional Information}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Language level &
+\normalsize{IELTS: 6.5, College English Test Band6 (CET6): 565 (Top 15\% in China), Mandarin (native), Cantonese (native)}
+\\[3pt]
+
+Other Interests &
+\normalsize{Badminton (Team Champion), Soccer (Second Place, twice), Basketball (Team Champion), Table tennis, Singing}
+\\
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
+```
